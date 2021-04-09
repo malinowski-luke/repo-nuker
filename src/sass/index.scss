@@ -1,0 +1,16 @@
+// colors
+$primary-color: #2b2e4a;
+
+$secondary-color: #e84545;
+$secondary-color-hover: #b43d3d;
+
+$accent-color: #53354a;
+$secondary-accent-color: #903749;
+
+// mixins for flexbox
+@mixin flex-box($dir: row, $just: space-evenly, $align: center) {
+  display: flex;
+  flex-direction: $dir;
+  justify-content: $just;
+  align-items: $align;
+}

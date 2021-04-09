@@ -1,0 +1,70 @@
+@import '../../sass/index.scss';
+
+$nukeRoate: -25deg;
+.home {
+}
+
+.logoContainer {
+  position: relative;
+  width: 500px;
+}
+
+.nuke {
+  width: 100%;
+  transform: rotate($nukeRoate);
+  &:hover {
+    animation: shake 0.5s infinite;
+  }
+}
+
+.textHeader {
+  transform: rotate(0deg);
+  z-index: 1;
+  font-size: 5em;
+  -webkit-text-stroke: 1px white;
+  -webkit-text-fill-color: $secondary-accent-color;
+  font-style: italic;
+  text-align: center;
+  font-family: Comic Sans MS, Comic Sans, cursive;
+}
+
+@keyframes shake {
+  0% {
+    transform: translate(1px, 1px) rotate($nukeRoate);
+  }
+  10% {
+    transform: translate(-1px, -2px) rotate($nukeRoate - 1deg);
+  }
+  20% {
+    transform: translate(-3px, 0px) rotate($nukeRoate + 1deg);
+  }
+  30% {
+    transform: translate(3px, 2px) rotate($nukeRoate);
+  }
+  40% {
+    transform: translate(1px, -1px) rotate($nukeRoate - 1deg);
+  }
+  50% {
+    transform: translate(-1px, 2px) rotate($nukeRoate + 1deg);
+  }
+  60% {
+    transform: translate(-3px, 1px) rotate($nukeRoate);
+  }
+  70% {
+    transform: translate(3px, 1px) rotate($nukeRoate - 1deg);
+  }
+  80% {
+    transform: translate(-1px, -1px) rotate($nukeRoate + 1deg);
+  }
+  90% {
+    transform: translate(1px, 2px) rotate($nukeRoate);
+  }
+  100% {
+    transform: translate(1px, -2px) rotate($nukeRoate - 1deg);
+  }
+}
+
+.buttonContainer {
+  @include flex-box();
+  margin-top: 25px;
+}

@@ -1,0 +1,15 @@
+@import '../../sass/index.scss';
+
+.linkButton {
+  padding: 15px;
+  color: white;
+  background: $secondary-color;
+  text-decoration: none;
+  border-radius: 10px;
+  transition: all 0.3s;
+  font-size: 25px;
+
+  &:hover {
+    background: $secondary-color-hover;
+  }
+}
