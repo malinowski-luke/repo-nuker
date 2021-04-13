@@ -1,0 +1,30 @@
+@import '../../sass/index.scss';
+
+.authContainer {
+  width: 50%;
+}
+
+.header {
+  text-align: center;
+  color: $text-color;
+}
+
+.linkContainer {
+  color: $text-color;
+}
+
+.link {
+  color: $text-color;
+  text-decoration: none;
+  font-size: 18px;
+  transition: all 0.3s ease;
+  &:hover {
+    color: $secondary-color;
+  }
+}
+
+.buttonContainer {
+  width: 100%;
+  padding-top: 25px;
+  @include flex-box();
+}

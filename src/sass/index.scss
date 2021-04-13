@@ -7,6 +7,8 @@ $secondary-color-hover: #b43d3d;
 $accent-color: #53354a;
 $secondary-accent-color: #903749;
 
+$text-color: #ffffff;
+
 // mixins for flexbox
 @mixin flex-box($dir: row, $just: space-evenly, $align: center) {
   display: flex;

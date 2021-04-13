@@ -1,11 +1,11 @@
 export interface User {
-  username: string,
-  githubToken: string
+  userName: string
+  token: string
 }
 
 export interface Repo {
-  name: string,
-  id: string | number,
-  createdAt: string,
+  name: string
+  id: string | number
+  createdAt: string
   updatedAt: string
 }
