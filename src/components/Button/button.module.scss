@@ -13,7 +13,8 @@
   border: none;
   outline: none;
 
-  &:hover {
+  &:hover,
+  &:disabled {
     background: $secondary-color-hover;
   }
 }
