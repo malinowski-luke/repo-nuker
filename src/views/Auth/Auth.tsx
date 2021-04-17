@@ -7,23 +7,26 @@ import { updateRepoStore } from '../../stores/repoStore'
 
 import Input from '../../components/Input/Input'
 import Button from '../../components/Button/Button'
-import styles from './auth.module.scss'
+import Checkbox from '../../components/Checkbox/Checkbox'
+import Modal from '../../components/Modal/Modal'
 
 import api from '../../utils/api'
 import { cleanRepoData } from '../../utils/utils'
 import { toast } from 'react-toastify'
 import { User, Repo } from '../../definitions'
 
+import styles from './auth.module.scss'
+
 interface Props {}
 
 const Auth: React.FC<Props> = () => {
   const [username, setUsername] = useState<string>('')
   const [token, setToken] = useState<string>('')
-
+  const [tokenHidden, setTokenHidden] = useState<boolean>(true)
   const [loading, setLoading] = useState<boolean>(false)
+  const [modalOpen, setModalOpen] = useState<boolean>(false)
 
   const history = useHistory()
-
   const user: User = useGetUser()
   const setUserToStore: (user: User) => void = useSetUser()
 
@@ -37,8 +40,16 @@ const Auth: React.FC<Props> = () => {
     setUsername(username)
   }
 
+  const handleOpenModal = () => {
+    setModalOpen(!modalOpen)
+  }
+
   const handleToken = (token: string) => {
     setToken(token)
+  }
+
+  const handleHideToken = () => {
+    setTokenHidden(!tokenHidden)
   }
 
   const handleAuth = async () => {
@@ -79,6 +90,7 @@ const Auth: React.FC<Props> = () => {
 
   return (
     <div className={`${styles.authContainer} slide-fade`}>
+      <Modal isOpen={modalOpen} handleClose={handleOpenModal} />
       <h1 className={styles.header}>Authorize Deletion</h1>
       <Input
         title='username'
@@ -88,27 +100,34 @@ const Auth: React.FC<Props> = () => {
       />
       <Input
         title='token'
-        type='password'
+        type={tokenHidden ? 'password' : 'token'}
         onChangeHandler={handleToken}
         textState={token}
       />
-      <span className={styles.linkContainer}>
-        <a
-          href='https://github.com/settings/tokens'
-          target='_blank'
-          rel='noreferrer'
-          className={styles.link}
-        >
-          How to get Github Token
-        </a>{' '}
-        | <span className={styles.link}>How to ?</span>
-      </span>
+      <div className={styles.optionsContainer}>
+        <Checkbox label='Show Token' onChangeHandler={handleHideToken} />
+        <span className={styles.linkContainer}>
+          <a
+            href='https://github.com/settings/tokens'
+            target='_blank'
+            rel='noreferrer'
+            className={styles.link}
+          >
+            How to get Github Token
+          </a>{' '}
+          |{' '}
+          <span className={styles.link} onClick={handleOpenModal}>
+            How to ?
+          </span>
+        </span>
+      </div>
       <div className={styles.buttonContainer}>
         <Button
           title='fetch repos'
           onClickHandler={handleAuth}
-          disbleCondition={username === '' && token === ''}
+          disbleCondition={username === '' || token === ''}
           block={true}
+          loading={loading}
         />
       </div>
     </div>

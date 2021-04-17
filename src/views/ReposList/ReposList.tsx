@@ -25,6 +25,7 @@ const ReposList: React.FC<Props> = () => {
   const setUser = useSetUser()
   const history = useHistory()
   const [filterName, setFilterName] = useState<string>('')
+  const [loading, setLoading] = useState<boolean>(false)
 
   useEffect(() => {
     if (user.username === '' || repos.length === 0) {
@@ -37,18 +38,15 @@ const ReposList: React.FC<Props> = () => {
 
     const selectedRepoCount = repos.filter((repo: Repo) => repo.selected).length
 
-    const filteredReposByName = repos.filter((repo: Repo) => {
-      console.log(repo.name)
-      console.log(repo.name.includes(filterName))
-      return repo.name.includes(filterName)
-    })
-
     return {
       selectedRepos,
       selectedRepoCount,
-      filteredReposByName,
     }
   }, [repos])
+
+  const filteredReposByName = repos.filter(
+    (repo: Repo) => repo.name.includes(filterName) === true
+  )
 
   const clearUserData = () => {
     history.push('/home')
@@ -89,6 +87,7 @@ const ReposList: React.FC<Props> = () => {
       return
     }
 
+    setLoading(true)
     try {
       const bulkDeleteResponse = await Promise.all(
         computed.selectedRepos.map(async (repo: Repo) => {
@@ -138,6 +137,7 @@ const ReposList: React.FC<Props> = () => {
           }`
         )
       }
+      setLoading(false)
     } catch (err) {
       console.error(err.message)
       toast.error('Delete Action Failed!')
@@ -155,7 +155,7 @@ const ReposList: React.FC<Props> = () => {
         onChangeHandler={setFilterName}
       />
       <Paginate
-        data={filterName === '' ? repos : computed.filteredReposByName}
+        data={filterName === '' ? repos : filteredReposByName}
         itemsPerPage={5}
         prev='Previous'
         next='Next'
@@ -166,18 +166,21 @@ const ReposList: React.FC<Props> = () => {
           onClickHandler={handleDeleteRepos}
           disbleCondition={computed.selectedRepoCount === 0}
           block={false}
+          loading={loading}
         />
         <Button
           title='Deselect All Repos'
           onClickHandler={handleDeselectRepos}
           disbleCondition={computed.selectedRepoCount === 0}
           block={false}
+          loading={false}
         />
         <Button
           title='Home'
           onClickHandler={handleGoHome}
           disbleCondition={false}
           block={false}
+          loading={false}
         />
       </div>
     </div>

@@ -6,6 +6,7 @@ interface Props {
   onClickHandler: () => any
   disbleCondition: boolean
   block: boolean
+  loading: boolean
 }
 
 const Button: React.FC<Props> = ({
@@ -13,6 +14,7 @@ const Button: React.FC<Props> = ({
   onClickHandler,
   disbleCondition,
   block,
+  loading,
 }) => {
   return (
     <button
@@ -20,7 +22,13 @@ const Button: React.FC<Props> = ({
       onClick={onClickHandler}
       disabled={disbleCondition}
     >
-      {title}
+      {!loading ? (
+        title
+      ) : (
+        <span>
+          loading <span className={styles.spinner}></span>
+        </span>
+      )}
     </button>
   )
 }

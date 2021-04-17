@@ -9,6 +9,11 @@
   color: $text-color;
 }
 
+.optionsContainer {
+  width: 100%;
+  @include flex-box(row, space-between, center);
+}
+
 .linkContainer {
   color: $text-color;
 }
