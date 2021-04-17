@@ -1,0 +1,10 @@
+@import '../../sass/index.scss';
+
+.repoList {
+  color: $text-color;
+}
+
+.buttonContainer {
+  margin-top: 10px;
+  @include flex-box();
+}

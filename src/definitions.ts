@@ -5,7 +5,8 @@ export interface User {
 
 export interface Repo {
   name: string
-  id: string | number
+  id: string
   createdAt: string
   updatedAt: string
+  selected: boolean
 }

@@ -7,7 +7,7 @@ interface Props {}
 
 const Home: React.FC<Props> = () => {
   return (
-    <div>
+    <div className='slide-fade'>
       <div className={styles.logoContainer}>
         <img className={styles.nuke} src={nukePng} alt='nuke img' />
         <h1 className={styles.textHeader}>Repo Nuker!</h1>

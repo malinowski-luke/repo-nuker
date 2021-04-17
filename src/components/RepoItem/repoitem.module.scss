@@ -1,0 +1,25 @@
+@import '../../sass/index.scss';
+
+.repoItem {
+  width: 100%;
+  height: 8vh;
+  background: $secondary-accent-color;
+  margin-top: 10px;
+  border-radius: 5px;
+  padding: 10px;
+
+  @include flex-box(row, space-evenly, center);
+  transition: all 0.3s ease;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.selected {
+  background: $secondary-color-hover;
+}
+
+.text {
+  margin-right: 5px;
+}

@@ -1,29 +1,27 @@
 import create from 'zustand'
 import { devtools, persist } from 'zustand/middleware'
 
-import { Repo, User } from '../definitions'
+import { Repo } from '../definitions'
 
 type State = {
   repos: Repo[]
-  user: User
-  setUser: any
-  setRepos: any
 }
 
 let store: any = (set: any) => {
   return {
     repos: [],
-    user: {
-      username: '',
-      token: '',
-    },
-    setUser: (user: User) => set((state: State) => ({ ...state, user })),
-    setRepos: (repos: Repo[]) => set((state: State) => ({ ...state, repos })),
   }
 }
 store = devtools(store)
-store = persist(store, { name: 'repo_config' })
+store = persist(store, {
+  name: 'repo_store',
+  getStorage: () => sessionStorage,
+})
 
 const useRepoStore = create<State>(store)
 
 export default useRepoStore
+
+export const updateRepoStore = (repos: Repo[]) => {
+  useRepoStore.setState({ repos })
+}

@@ -9,6 +9,8 @@ $secondary-accent-color: #903749;
 
 $text-color: #ffffff;
 
+$button-font-size: 25px;
+
 // mixins for flexbox
 @mixin flex-box($dir: row, $just: space-evenly, $align: center) {
   display: flex;

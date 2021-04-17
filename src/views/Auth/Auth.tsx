@@ -1,65 +1,97 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+
 import { useHistory } from 'react-router-dom'
-import useRepoStore from '../../stores/repoStore'
-import api from '../../utils/api'
+import useSetUser from '../../hooks/useSetUser'
+import useGetUser from '../../hooks/useGetUser'
+import { updateRepoStore } from '../../stores/repoStore'
 
 import Input from '../../components/Input/Input'
 import Button from '../../components/Button/Button'
 import styles from './auth.module.scss'
 
-import { User } from '../../definitions'
+import api from '../../utils/api'
+import { cleanRepoData } from '../../utils/utils'
+import { toast } from 'react-toastify'
+import { User, Repo } from '../../definitions'
 
 interface Props {}
 
 const Auth: React.FC<Props> = () => {
+  const [username, setUsername] = useState<string>('')
+  const [token, setToken] = useState<string>('')
+
+  const [loading, setLoading] = useState<boolean>(false)
+
   const history = useHistory()
 
-  const [user, setUser] = useState<User>({ username: '', token: '' })
+  const user: User = useGetUser()
+  const setUserToStore: (user: User) => void = useSetUser()
 
-  const [setUserToStore, setReposToStore] = useRepoStore((state) => [
-    state.setUser,
-    state.setRepos,
-  ])
+  useEffect(() => {
+    if (user.username !== '') {
+      history.replace('/repos')
+    }
+  }, [history, user.username])
 
   const handleUsername = (username: string) => {
-    setUser({ ...user, username })
+    setUsername(username)
   }
 
   const handleToken = (token: string) => {
-    setUser({ ...user, token })
+    setToken(token)
   }
 
   const handleAuth = async () => {
-    setUserToStore(user)
+    const currentUser: User = { username, token }
+
+    setLoading(true)
 
     try {
       const response = await api.get(
-        `https://api.github.com/search/repositories?q=user:${user.username}`,
+        `https://api.github.com/search/repositories?q=user:${currentUser.username}`,
         {
           headers: {
-            Authorization: `Bearer ${user.token}`,
+            Authorization: `Bearer ${currentUser.token}`,
             Accept: 'application/vnd.github.v3+json',
           },
         }
       )
-      const repos = response.data.items
 
-      if (repos.length === 0) {
+      if (response.data.items.length === 0) {
+        toast.success('No Repos Found')
         return
       }
 
-      setReposToStore(repos)
+      const repos: Repo[] = cleanRepoData(response.data.items)
+
+      setUserToStore(currentUser)
+      updateRepoStore(repos)
+
+      toast.success(`Successfully Fetched ${repos.length} Github Repos`)
       history.push('/repos')
     } catch (err) {
       console.error(err.message)
+      toast.error('Invalid Github Credentials')
     }
+
+    setLoading(false)
   }
 
   return (
-    <div className={styles.authContainer}>
+    <div className={`${styles.authContainer} slide-fade`}>
       <h1 className={styles.header}>Authorize Deletion</h1>
-      <Input title='username' type='text' onChangeHandler={handleUsername} />
-      <Input title='token' type='password' onChangeHandler={handleToken} />
+      <Input
+        title='username'
+        type='text'
+        onChangeHandler={handleUsername}
+        textState={username}
+      />
+      <Input
+        title='token'
+        type='password'
+        onChangeHandler={handleToken}
+        textState={token}
+      />
       <span className={styles.linkContainer}>
         <a
           href='https://github.com/settings/tokens'
@@ -73,9 +105,10 @@ const Auth: React.FC<Props> = () => {
       </span>
       <div className={styles.buttonContainer}>
         <Button
-          title='Fetch Repos'
+          title='fetch repos'
           onClickHandler={handleAuth}
-          disbleCondition={user.username === '' && user.token === ''}
+          disbleCondition={username === '' && token === ''}
+          block={true}
         />
       </div>
     </div>

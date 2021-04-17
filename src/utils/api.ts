@@ -1,12 +1,12 @@
 import axios from 'axios'
 
 // define intercepotrs
-const requestSucess = <T>(request: any) => {
+const requestSucess = (request: any) => {
   console.log(request)
   return request
 }
 
-const requestError = <T>(request: any) => {
+const requestError = (request: any) => {
   console.error(request)
   return Promise.reject(request)
 }
