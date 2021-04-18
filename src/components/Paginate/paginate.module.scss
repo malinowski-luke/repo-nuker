@@ -10,12 +10,12 @@
   @include flex-box();
 }
 .pagination > .active > a {
-  background-color: #47ccde;
-  border-color: #47ccde;
-  color: #fff;
+  background-color: $secondary-color;
+  border-color: $secondary-color;
+  color: $text-color;
 }
 .pagination > li > a {
-  border: 1px solid #47ccde;
+  border: 1px solid $secondary-color;
   padding: 5px 10px;
   outline: none;
   cursor: pointer;
@@ -26,13 +26,13 @@
 .pagination > .active > span:hover,
 .pagination > .active > a:focus,
 .pagination > .active > span:focus {
-  background-color: #47ccde;
-  border-color: #47ccde;
+  background-color: $secondary-color;
+  border-color: $secondary-color;
   outline: none;
 }
 .pagination > li > a,
 .pagination > li > span {
-  color: #47ccde;
+  color: $secondary-color;
 }
 .pagination > li:first-child > a,
 .pagination > li:first-child > span,

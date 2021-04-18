@@ -149,7 +149,8 @@ const ReposList: React.FC<Props> = () => {
   return (
     <div className={`${styles.repoList} slide-fade`}>
       <h1>
-        {`${user.username}'s`} Repos <GithubLogo />
+        {`${user.username}'s`} Repos{' '}
+        <GithubLogo githubUsername={user.username} />
       </h1>
       <h3>Selected Repos: {computed.selectedRepoCount}</h3>
       <Input

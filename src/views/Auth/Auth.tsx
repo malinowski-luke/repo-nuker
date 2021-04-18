@@ -98,10 +98,40 @@ const Auth: React.FC<Props> = () => {
 
   return (
     <div className={`${styles.authContainer} slide-fade`}>
-      <Modal isOpen={modalOpen} handleClose={handleOpenModal} />
-      <h1 className={styles.header}>
+      <Modal isOpen={modalOpen} handleClose={handleOpenModal}>
+        <div className={styles.modalContent}>
+          <h1>Get Access Token</h1>
+          <hr />
+          <h2>Step 1</h2>
+          <p>
+            Clicking the "Generate Access Token" link below will bring you to
+            GitHubs token generator page. Once there, click "Generate new token"
+            on the top right of the screen.
+          </p>
+          <h2>Step 2</h2>
+          <p>
+            Select "public_repo" and "delete_repo" from the listed options.
+            Then, click "Generate token" and paste the generated token in the
+            input field below.
+          </p>
+          <h2>Step 3</h2>
+          <p>
+            Submit. You will have the opportunity to choose which repos you want
+            to save and delete after you hit "Fetch Repos"
+          </p>
+          <a
+            href='https://github.com/settings/tokens'
+            target='_blank'
+            rel='noreferrer'
+            onClick={handleOpenModal}
+          >
+            Generate Access Token
+          </a>
+        </div>
+      </Modal>
+      <h2 className={styles.header}>
         Authorize Deletion <GithubLogo />
-      </h1>
+      </h2>
       <Input
         title='username'
         type='text'

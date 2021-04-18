@@ -4,7 +4,7 @@
   width: 100%;
   padding: 10px;
   color: $text-color;
-  background: $secondary-color;
+  background: $primary-color;
   text-decoration: none;
   border-radius: 5px;
   transition: all 0.3s;
@@ -15,6 +15,6 @@
   &:hover {
     color: $text-color;
     text-decoration: none;
-    background: $secondary-color-hover;
+    background: $primary-color-hover;
   }
 }

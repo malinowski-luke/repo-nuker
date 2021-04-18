@@ -40,7 +40,7 @@ const Paginate: React.FC<Props> = ({ data, itemsPerPage, prev, next }) => {
   useEffect(paginateRepos, [pageOffset, data, itemsPerPage])
 
   useEffect(() => {
-    if (paginatedData.length <= 5 && pageOffset !== pageCount) {
+    if (paginatedData.length < 5 && pageOffset !== pageCount) {
       setPageOffset(0)
     }
   }, [paginatedData.length, pageOffset, pageCount])

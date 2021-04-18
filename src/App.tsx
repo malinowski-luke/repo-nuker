@@ -8,6 +8,7 @@ const App: React.FC = () => {
   return (
     <>
       <Toast />
+      <div className={styles.imgBackground}></div>
       <div className={styles.app}>{routes}</div>
     </>
   )

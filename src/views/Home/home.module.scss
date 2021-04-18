@@ -9,6 +9,11 @@ $nukeRoate: -25deg;
   padding-right: 10px;
 }
 
+.nuke {
+  width: 100%;
+  transform: rotate($nukeRoate);
+}
+
 @media only screen and (min-width: 768px) {
   .logoContainer {
     width: 85vw;
@@ -19,21 +24,21 @@ $nukeRoate: -25deg;
   .logoContainer {
     width: 40vw;
   }
-}
 
-.nuke {
-  width: 100%;
-  transform: rotate($nukeRoate);
-  &:hover {
-    animation: shake 0.5s infinite;
+  .nuke {
+    width: 100%;
+    transform: rotate($nukeRoate);
+    &:hover {
+      animation: shake 0.5s infinite;
+    }
   }
 }
 
 .textHeader {
   transform: rotate(0deg);
   z-index: 1;
-  font-size: 5em;
-  font-weight: 900;
+  font-family: 'Sonsie One', cursive;
+  font-size: 4rem;
   -webkit-text-stroke: 1px $text-color;
   -webkit-text-fill-color: $secondary-color;
   font-style: italic;

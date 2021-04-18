@@ -6,15 +6,47 @@
   padding-right: 10px;
 }
 
+.modalContent {
+  width: 80vw;
+  padding-left: 10px;
+  padding-right: 10px;
+  color: $text-color;
+
+  & h2 {
+    margin-top: 10px;
+    margin-bottom: 2px;
+  }
+
+  & p {
+    margin-bottom: 10px;
+  }
+
+  & a {
+    color: $secondary-color;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    &:hover {
+      color: $secondary-color-hover;
+    }
+  }
+}
+
 @media only screen and (min-width: 768px) {
   .authContainer {
     width: 85vw;
+  }
+
+  .modalContent {
+    width: 90vw;
   }
 }
 
 @media only screen and (min-width: 1025px) {
   .authContainer {
-    width: 40vw;
+    width: 45vw;
+  }
+  .modalContent {
+    width: 50vw;
   }
 }
 

@@ -1,8 +1,0 @@
-Step 1
-Clicking the "Generate Access Token" link below will bring you to GitHubs token generator page. Once there, click "Generate new token" on the top right of the screen.
-
-Step 2
-Clicking the "Generate Access Token" link below will bring you to GitHubs token generator page. Once there, click "Generate new token" on the top right of the screen.
-
-Step 3
-Submit. You will have the opportunity to choose which repos you want to save and delete after you hit "Generate Repo List"

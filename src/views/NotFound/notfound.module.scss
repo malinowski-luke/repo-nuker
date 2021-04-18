@@ -1,0 +1,9 @@
+@import '../../sass/index.scss';
+
+.notFound {
+  @include flex-box(column, center, space-evenly);
+
+  & h1 {
+    color: $text-color;
+  }
+}

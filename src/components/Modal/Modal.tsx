@@ -1,7 +1,6 @@
 import React from 'react'
 
 import ReactModal from 'react-modal'
-import Button from '../Button/Button'
 
 interface Props {
   isOpen: boolean
@@ -16,22 +15,25 @@ const modalStyle = {
     bottom: 'auto',
     marginRight: '-50%',
     transform: 'translate(-50%, -50%)',
-    padding: '50px',
-    transition: 'all 0.3s ease',
+    background: '#303030',
+    border: '1px solid #fff',
+  },
+
+  overlay: {
+    background: 'rgba(0,0,0,0.5)',
   },
 }
 
-const Modal: React.FC<Props> = ({ isOpen, handleClose }) => {
+const Modal: React.FC<Props> = ({ isOpen, handleClose, children }) => {
   return (
-    <ReactModal isOpen={isOpen} style={modalStyle} ariaHideApp={false}>
-      <h1>Hello From Modal</h1>
-      <Button
-        title='Close'
-        loading={false}
-        onClickHandler={handleClose}
-        disbleCondition={false}
-        block={false}
-      />
+    <ReactModal
+      isOpen={isOpen}
+      style={modalStyle}
+      ariaHideApp={false}
+      onRequestClose={handleClose}
+      shouldCloseOnOverlayClick
+    >
+      {children}
     </ReactModal>
   )
 }
