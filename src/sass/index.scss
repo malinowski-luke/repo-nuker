@@ -1,15 +1,17 @@
 // colors
-$primary-color: #2b2e4a;
+$primary-color: #000000;
 
-$secondary-color: #e84545;
-$secondary-color-hover: #b43d3d;
+$secondary-color: #892cdc;
+$secondary-color-hover: #52057b;
 
-$accent-color: #53354a;
-$secondary-accent-color: #903749;
+$accent-color: #bc6ff1;
+$secondary-accent-color: #a567cf;
 
 $text-color: #ffffff;
 
 $button-font-size: 25px;
+
+$font: 'Abel', sans-serif;
 
 // mixins for flexbox
 @mixin flex-box($dir: row, $just: space-evenly, $align: center) {

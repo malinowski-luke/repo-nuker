@@ -1,7 +1,21 @@
 @import '../../sass/index.scss';
 
 .authContainer {
-  width: 50%;
+  width: 100vw;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+@media only screen and (min-width: 768px) {
+  .authContainer {
+    width: 85vw;
+  }
+}
+
+@media only screen and (min-width: 1025px) {
+  .authContainer {
+    width: 40vw;
+  }
 }
 
 .header {
@@ -25,6 +39,7 @@
   transition: all 0.3s ease;
   &:hover {
     color: $secondary-color;
+    cursor: pointer;
   }
 }
 

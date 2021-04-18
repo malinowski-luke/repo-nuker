@@ -1,0 +1,19 @@
+@import '../../sass/index.scss';
+
+.githubLogo {
+  width: 8vw;
+  vertical-align: middle;
+  fill: $text-color;
+}
+
+@media only screen and (min-width: 768px) {
+  .githubLogo {
+    width: 5vw;
+  }
+}
+
+@media only screen and (min-width: 1025px) {
+  .githubLogo {
+    width: 2.5vw;
+  }
+}

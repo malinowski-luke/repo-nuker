@@ -9,6 +9,8 @@ import Input from '../../components/Input/Input'
 import Button from '../../components/Button/Button'
 import Checkbox from '../../components/Checkbox/Checkbox'
 import Modal from '../../components/Modal/Modal'
+import GithubLogo from '../../components/GithubLogo/GithubLogo'
+import { Link } from 'react-router-dom'
 
 import api from '../../utils/api'
 import { cleanRepoData } from '../../utils/utils'
@@ -88,10 +90,18 @@ const Auth: React.FC<Props> = () => {
     setLoading(false)
   }
 
+  const handleClearState = () => {
+    setUsername('')
+    setToken('')
+    history.push('/home')
+  }
+
   return (
     <div className={`${styles.authContainer} slide-fade`}>
       <Modal isOpen={modalOpen} handleClose={handleOpenModal} />
-      <h1 className={styles.header}>Authorize Deletion</h1>
+      <h1 className={styles.header}>
+        Authorize Deletion <GithubLogo />
+      </h1>
       <Input
         title='username'
         type='text'
@@ -107,18 +117,16 @@ const Auth: React.FC<Props> = () => {
       <div className={styles.optionsContainer}>
         <Checkbox label='Show Token' onChangeHandler={handleHideToken} />
         <span className={styles.linkContainer}>
-          <a
+          {/*
             href='https://github.com/settings/tokens'
-            target='_blank'
-            rel='noreferrer'
-            className={styles.link}
-          >
-            How to get Github Token
-          </a>{' '}
-          |{' '}
+            */}
           <span className={styles.link} onClick={handleOpenModal}>
-            How to ?
+            How to ?{' '}
           </span>
+          |{' '}
+          <Link className={styles.link} onClick={handleClearState} to='/home'>
+            Home
+          </Link>
         </span>
       </div>
       <div className={styles.buttonContainer}>

@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import { Repo } from '../../definitions'
+
 import { updateRepoStore } from '../../stores/repoStore'
 import useAllRepos from '../../hooks/useAllRepos'
+
+import { DateTime } from 'luxon'
 
 import styles from './repoitem.module.scss'
 
@@ -21,6 +24,15 @@ const RepoItem: React.FC<Props> = ({ repo }) => {
     })
     updateRepoStore(updatedRepos)
   }
+
+  const computedDates = useMemo(() => {
+    const format = 'D'
+    return {
+      createdAt: DateTime.fromISO(repo.createdAt).toFormat(format),
+      updatedAt: DateTime.fromISO(repo.updatedAt).toFormat(format),
+    }
+  }, [repo])
+
   return (
     <div
       className={`${styles.repoItem} ${repo.selected && styles.selected}`}
@@ -28,8 +40,8 @@ const RepoItem: React.FC<Props> = ({ repo }) => {
     >
       <span className={styles.text}>{repo.id}</span>
       <span className={styles.text}>{repo.name}</span>
-      <span className={styles.text}>{repo.createdAt}</span>
-      <span>{repo.updatedAt}</span>
+      <span className={styles.text}>{computedDates.createdAt}</span>
+      <span>{computedDates.updatedAt}</span>
     </div>
   )
 }

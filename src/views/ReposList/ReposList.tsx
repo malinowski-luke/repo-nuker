@@ -10,6 +10,7 @@ import { updateRepoStore } from '../../stores/repoStore'
 import api from '../../utils/api'
 import { toast } from 'react-toastify'
 
+import GithubLogo from '../../components/GithubLogo/GithubLogo'
 import Input from '../../components/Input/Input'
 import Button from '../../components/Button/Button'
 import Paginate from '../../components/Paginate/Paginate'
@@ -31,7 +32,7 @@ const ReposList: React.FC<Props> = () => {
     if (user.username === '' || repos.length === 0) {
       history.replace('/auth')
     }
-  }, [user, repos.length])
+  }, [user, repos.length, history])
 
   const computed = useMemo(() => {
     const selectedRepos = repos.filter((repo: Repo) => repo.selected)
@@ -147,11 +148,14 @@ const ReposList: React.FC<Props> = () => {
 
   return (
     <div className={`${styles.repoList} slide-fade`}>
-      <h2>Number of Selected Repos: {computed.selectedRepoCount}</h2>
+      <h1>
+        {`${user.username}'s`} Repos <GithubLogo />
+      </h1>
+      <h3>Selected Repos: {computed.selectedRepoCount}</h3>
       <Input
         type='text'
         textState={filterName}
-        title='filter'
+        title='filter by name'
         onChangeHandler={setFilterName}
       />
       <Paginate
@@ -162,14 +166,14 @@ const ReposList: React.FC<Props> = () => {
       />
       <div className={styles.buttonContainer}>
         <Button
-          title='Delete Repos'
+          title='Delete'
           onClickHandler={handleDeleteRepos}
           disbleCondition={computed.selectedRepoCount === 0}
           block={false}
           loading={loading}
         />
         <Button
-          title='Deselect All Repos'
+          title='Deselect'
           onClickHandler={handleDeselectRepos}
           disbleCondition={computed.selectedRepoCount === 0}
           block={false}

@@ -4,7 +4,21 @@ $nukeRoate: -25deg;
 
 .logoContainer {
   position: relative;
-  width: 500px;
+  width: 95vw;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+@media only screen and (min-width: 768px) {
+  .logoContainer {
+    width: 85vw;
+  }
+}
+
+@media only screen and (min-width: 1025px) {
+  .logoContainer {
+    width: 40vw;
+  }
 }
 
 .nuke {
@@ -19,11 +33,11 @@ $nukeRoate: -25deg;
   transform: rotate(0deg);
   z-index: 1;
   font-size: 5em;
-  -webkit-text-stroke: 1px white;
-  -webkit-text-fill-color: $secondary-accent-color;
+  font-weight: 900;
+  -webkit-text-stroke: 1px $text-color;
+  -webkit-text-fill-color: $secondary-color;
   font-style: italic;
   text-align: center;
-  font-family: Comic Sans MS, Comic Sans, cursive;
 }
 
 @keyframes shake {

@@ -6,7 +6,7 @@ toast.configure()
 
 interface Props {}
 
-const Toast: React.FC<Props> = ({}) => {
+const Toast: React.FC<Props> = () => {
   return (
     <ToastContainer
       position='top-right'
