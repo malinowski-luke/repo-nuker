@@ -8,10 +8,12 @@ import NotFound from '../views/NotFound/NotFound'
 
 export default (
   <Switch>
+    {/* routes */}
     <Route path='/home' component={Home} />
     <Route path='/auth' component={Auth} />
     <Route path='/repos' component={ReposList} />
     <Route path='/not-found' component={NotFound} />
+    {/* redirect */}
     <Redirect exact from='/' to='/home' />
     <Redirect from='/' to='/not-found' />
   </Switch>
