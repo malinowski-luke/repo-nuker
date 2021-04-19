@@ -1,12 +1,11 @@
 @import '../../sass/index.scss';
 
 .button {
-  // width: 100%;
-  padding: 10px;
-  color: white;
+  padding: 15px;
+  color: $text-color;
   background: $primary-color;
   text-decoration: none;
-  border-radius: 5px;
+  border-radius: 10vh;
   transition: all 0.3s;
   font-size: 20px;
   text-transform: capitalize;
