@@ -16,7 +16,7 @@ const modalStyle = {
     marginRight: '-50%',
     transform: 'translate(-50%, -50%)',
     background: '#303030',
-    border: '1px solid #fff',
+    border: 'none',
   },
 
   overlay: {

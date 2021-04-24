@@ -12,6 +12,10 @@
   padding-right: 10px;
   color: $text-color;
 
+  & div {
+    @include flex-box(row, space-between);
+  }
+
   & h2 {
     margin-top: 10px;
     margin-bottom: 2px;
@@ -25,8 +29,10 @@
     color: $secondary-color;
     text-decoration: none;
     transition: all 0.3s ease;
-    &:hover {
-      color: $secondary-color-hover;
+    @media screen and (min-width: 1025px) {
+      &:hover {
+        color: $secondary-color-hover;
+      }
     }
   }
 }

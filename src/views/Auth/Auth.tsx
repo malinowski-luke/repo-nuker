@@ -12,6 +12,7 @@ import Checkbox from '../../components/Checkbox/Checkbox'
 import Modal from '../../components/Modal/Modal'
 import GithubLogo from '../../components/GithubLogo/GithubLogo'
 import { Link } from 'react-router-dom'
+import Close from '../../components/Close/Close'
 
 import api from '../../utils/api'
 import { cleanRepoData } from '../../utils/utils'
@@ -101,7 +102,11 @@ const Auth: React.FC<Props> = () => {
     <div className={`${styles.authContainer} slide-fade`}>
       <Modal isOpen={modalOpen} handleClose={handleOpenModal}>
         <div className={styles.modalContent}>
-          <h1>Get Access Token</h1>
+          <div>
+            {' '}
+            <h1>Get Access Token</h1>
+            <Close closeHandler={handleOpenModal} />
+          </div>
           <hr />
           <h2>Step 1</h2>
           <p>
@@ -124,7 +129,6 @@ const Auth: React.FC<Props> = () => {
             href='https://github.com/settings/tokens'
             target='_blank'
             rel='noreferrer'
-            onClick={handleOpenModal}
           >
             Generate Access Token
           </a>
