@@ -14,9 +14,23 @@ $nukeRoate: -25deg;
   transform: rotate($nukeRoate);
 }
 
+.textHeader {
+  transform: rotate(0deg);
+  z-index: 1;
+  font-family: 'Sonsie One', cursive;
+  font-size: 3.5rem;
+  -webkit-text-stroke: 1px $text-color;
+  -webkit-text-fill-color: $secondary-color;
+  font-style: italic;
+  text-align: center;
+}
+
 @media only screen and (min-width: 768px) {
   .logoContainer {
     width: 55vw;
+  }
+  .textHeader {
+    font-size: 4rem;
   }
 }
 
@@ -38,17 +52,6 @@ $nukeRoate: -25deg;
   .logoContainer {
     width: 25vw;
   }
-}
-
-.textHeader {
-  transform: rotate(0deg);
-  z-index: 1;
-  font-family: 'Sonsie One', cursive;
-  font-size: 4rem;
-  -webkit-text-stroke: 1px $text-color;
-  -webkit-text-fill-color: $secondary-color;
-  font-style: italic;
-  text-align: center;
 }
 
 @keyframes shake {
