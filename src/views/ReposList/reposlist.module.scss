@@ -20,6 +20,18 @@
   }
 }
 
+@media only screen and (min-width: 1200px) {
+  .repoList {
+    width: 75vw;
+  }
+}
+
+@media only screen and (min-width: 1400px) {
+  .repoList {
+    width: 50vw;
+  }
+}
+
 .buttonContainer {
   margin-top: 10px;
   @include flex-box();

@@ -4,7 +4,7 @@ $nukeRoate: -25deg;
 
 .logoContainer {
   position: relative;
-  width: 95vw;
+  width: 85vw;
   padding-left: 10px;
   padding-right: 10px;
 }
@@ -31,6 +31,12 @@ $nukeRoate: -25deg;
     &:hover {
       animation: shake 0.5s infinite;
     }
+  }
+}
+
+@media only screen and (min-width: 1400px) {
+  .logoContainer {
+    width: 25vw;
   }
 }
 

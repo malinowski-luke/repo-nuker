@@ -56,6 +56,15 @@
   }
 }
 
+@media only screen and (min-width: 1400px) {
+  .authContainer {
+    width: 35vw;
+  }
+  .modalContent {
+    width: 40vw;
+  }
+}
+
 .header {
   text-align: center;
   color: $text-color;
