@@ -3,12 +3,12 @@
 .githubLogo {
   width: 8vw;
   vertical-align: middle;
-  fill: $secondary-color;
+  fill: $primary-color;
   transition: all 0.3s ease;
 }
 
 .githubLink:hover {
-  fill: $secondary-color-hover;
+  fill: $primary-color-hover;
 }
 
 @media only screen and (min-width: 768px) {
