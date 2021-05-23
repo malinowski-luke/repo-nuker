@@ -1,5 +1,6 @@
 import create from 'zustand'
 import { devtools, persist } from 'zustand/middleware'
+import { StateCreator } from 'zustand/vanilla'
 
 import { User } from '../definitions'
 
@@ -8,7 +9,7 @@ type State = {
   setUser: any
 }
 
-let store: any = (set: any) => {
+let store: StateCreator<State> = (set) => {
   return {
     user: {
       username: '',
@@ -17,7 +18,11 @@ let store: any = (set: any) => {
     setUser: (user: User) => set((state: State) => ({ ...state, user })),
   }
 }
-store = devtools(store)
+
+if (process.env.NODE_ENV === 'development') {
+  store = devtools(store)
+}
+
 store = persist(store, {
   name: 'user',
   getStorage: () => sessionStorage,
